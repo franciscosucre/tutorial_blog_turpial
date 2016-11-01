@@ -1,0 +1,48 @@
+[
+ 	{ 	"model": "auth.user",
+        "pk": 1,
+        "fields": 
+        {
+		    "username": "frank91frank@gmail.com",
+		    "email": "frank91frank@gmail.com",
+		    "first_name": "Francisco Javier",
+		    "last_name": "Sucre Gonzalez",
+            "password": "pbkdf2_sha256$20000$UqSXDZxkrsTO$l7RWPQ7Osr8VrBrF9pyVOJD/0futmelVAuxy1xMmst4=",
+            "is_superuser": true,
+            "is_staff": true,
+            "is_active": true
+		}
+	},
+	
+	{ 	"model": "auth.user",
+		"pk": 2,
+		"fields": 
+		{
+		    "username": "andresucre@gmail.com",
+		    "email": "andresucre@gmail.com",
+		    "first_name": "Andrea",
+		    "last_name": "Sucre Gonzalez",
+		    "password": "pbkdf2_sha256$20000$UqSXDZxkrsTO$l7RWPQ7Osr8VrBrF9pyVOJD/0futmelVAuxy1xMmst4=",
+		    "is_superuser": true,
+		    "is_staff": true,
+		    "is_active": true
+		}
+	},
+
+	{ "model": "writer.Writer",
+        "pk": 1,
+        "fields": 
+        {
+            "user": 1,
+            "pseudonym": "Zenji"
+        }
+    },
+    { "model": "writer.Writer",
+        "pk": 2,
+        "fields": 
+        {
+        	"user": 2,
+			"pseudonym": "Ashura"
+		}
+    }
+]

@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}
+  Writing App
+{% endblock %}
+{% block innerContents%}
+	<form method="post">
+		{% if message %}
+			{{ message }}
+			<br>
+			<br>
+		{% endif %}
+		{% csrf_token %}
+		<div style="color:#0000FF">
+			<div style="color:#0000FF">
+				<p>REGISTER_WRITER</p>
+			</div>
+			<div style="color:#0000FF">
+				{{ registerForm.email }}
+			</div>
+			<br>
+			<div style="color:#0000FF">
+				{{ registerForm.password }}
+			</div>
+			<br>
+			<div style="color:#0000FF">
+				{{ registerForm.comfirmPassword }}
+			</div>
+			<br>
+			<div style="color:#0000FF">
+				{{ registerForm.firstName }}
+			</div>
+			<br>
+			<div style="color:#0000FF">
+				{{ registerForm.lastName }}
+			</div>
+			<br>
+			<div style="color:#0000FF">
+				{{ registerForm.pseudonym }}
+			</div>
+			<br>
+			<div style="color:#0000FF">
+				<input type="submit" value="Registrar" value="Registrar" class="btn btn-primary"/>
+			</div>
+		</div>
+	</form>
+{% endblock %}

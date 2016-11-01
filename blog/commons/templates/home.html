@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}
+  Writing App
+{% endblock %}
+{% block innerContents%}
+
+	<div style="color:#0000FF">
+	  <h3>HOME_WRITER</h3>
+	</div>
+	<br>
+	<br>
+	<br>
+	{% if message %}
+		<div style="color:#0000FF">
+			<p>Message: {{ message }}</p>
+		</div>
+	{% endif %}	
+	{% if id %}
+		<div style="color:#0000FF">
+			<ul>
+				<li>id : {{ id }}</li>
+				<li>First Name : {{ first_name }}</li>
+				<li>Last Name : {{ last_name }}</li>
+				<li>Email : {{ email }}</li>
+				<li>Pseudonym : {{ pseudonym }}</li>
+			</ul>
+		</div>	
+	{% endif %}
+{% endblock %}

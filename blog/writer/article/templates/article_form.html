@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}
+  Writing App
+{% endblock %}
+{% block innerContents%}
+		{% if message %}
+			{{ message }}
+			<br>
+			<br>
+		{% endif %}
+		{% csrf_token %}
+		<div style="color:#0000FF">
+			<form method="post">{% csrf_token %}
+		    	{{ form.as_p }}
+		    <input type="submit" value="Submit" />
+		</form>
+		</div>
+{% endblock %}
