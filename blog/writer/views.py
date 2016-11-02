@@ -7,7 +7,6 @@ from django.shortcuts import (render)
 from writer.form import (WriterRegister)
 from writer.exceptions import (PasswordDifferent)
 from commons.exceptions import UnknownError
-from writer.controller import registerWriter
 from sys import exc_info
 # import the logging library
 import logging
@@ -24,7 +23,7 @@ def registerWriterView(request):
             registerForm = WriterRegister(request.POST)
             if registerForm.is_valid():
                 # Registramos al escritor
-                newWriter = registerWriter(registerForm)
+                newWriter = registerForm.save(True)
                 # Renderizamos el html con los datos del nuevo escritor
                 return render(
                     request,
@@ -63,8 +62,8 @@ def registerWriterView(request):
     # Si recibimos cualquier otra excepcion
     except:
         message = str(UnknownError())
-        logger.error(message)
-        logger.error(exc_info[0])
+        logger.exception(message)
+        logger.exception(exc_info()[0])
         return render(
             request,
             'RegisterWriter.html',

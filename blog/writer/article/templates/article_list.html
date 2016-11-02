@@ -17,7 +17,7 @@
 			<ul>
 				<!-- Iteramos sobre la lista de objetos recibidas del view -->
 			    {% for article in object_list %}
-				    <li>{{ article.name }}  : {{ article.type }} 
+				    <li><a href="{% url "article_detail" article.id %}">{{ article.name }}</a>  : {{ article.type }} 
 				    <!-- Estos links nos llevan al url project_edit con article.id como argumento -->
 				    <a href="{% url "article_edit" article.id %}">Editar</a>
 				    <a href="{% url "article_delete" article.id %}">Eliminar</a>
