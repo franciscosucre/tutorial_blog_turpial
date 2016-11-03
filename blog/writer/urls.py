@@ -11,6 +11,7 @@ from writer import views
 
 # Este error es raro, en django funciona
 urlpatterns = [
-    url(r'^RegisterWriter$', views.registerWriterView,name = 'RegisterWriter'),
+    url(r'^RegisterWriter$', views.RegisterWriter.as_view(),name = 'RegisterWriter'),
+    url(r'^register_done', views.RegisterWriterDone.as_view(),name = 'RegisterWriterDone'),
     url(r'^article/', include('writer.article.urls')),
 ]

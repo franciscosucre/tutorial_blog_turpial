@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}
+  Writing App
+{% endblock %}
+{% block innerContents%}
+	{% csrf_token %}
+	<div style="color:#0000FF">
+		<p>Su registro ha sido exitoso</p>
+	</div>
+	<div style="color:#0000FF">
+        <ul>
+            <li>id : {{ request.user.id }}</li>
+            <li>Username : {{ request.user.username }}</li>
+            <li>First Name : {{ request.user.first_name }}</li>
+            <li>Last Name : {{ request.user.last_name }}</li>
+            <li>Email : {{ request.user.email }}</li>
+            <li>Pseudonym : {{ request.user.pseudonym }}</li>
+        </ul>
+    </div>  
+{% endblock %}

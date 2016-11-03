@@ -4,9 +4,6 @@ form.py: En este archivo construiremos los formularios que utilizara nuestra apl
 '''
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
-from django.db import transaction
-from django.utils.translation import ugettext as _
-from django.contrib.auth.models import User
 from writer.models import Writer
 
 

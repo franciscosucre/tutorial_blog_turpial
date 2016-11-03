@@ -11,42 +11,42 @@
 				{% if message %}
                     <p>{{ message }}</p>
                 {% endif %}
-				{% if registerForm.errors %}
+				{% if form.errors %}
                     <p style="color='{{ color }}'">{{ registerForm.errors }}</p>
                 {% endif %}
 			</div>
 			<div style="color:#0000FF">
-                <p>{{registerForm.username.label}}</p>
-                {{ registerForm.username }}
+                <p>{{form.username.label}}</p>
+                {{ form.username }}
             </div>
 			<div style="color:#0000FF">
-                <p>{{registerForm.email.label}}</p>
-				{{ registerForm.email }}
+                <p>{{form.email.label}}</p>
+				{{ form.email }}
 			</div>
 			<br>
 			<div style="color:#0000FF">
-			    <p>{{registerForm.password1.label}}</p>
-				{{ registerForm.password1 }}
+			    <p>{{form.password1.label}}</p>
+				{{ form.password1 }}
 			</div>
 			<br>
 			<div style="color:#0000FF">
-		        <p>{{registerForm.password2.label}}</p>
-				{{ registerForm.password2 }}
+		        <p>{{form.password2.label}}</p>
+				{{ form.password2 }}
 			</div>
 			<br>
 			<div style="color:#0000FF">
-		        <p>{{registerForm.first_name.label}}</p>
-				{{ registerForm.first_name }}
+		        <p>{{form.first_name.label}}</p>
+				{{ form.first_name }}
 			</div>
 			<br>
 			<div style="color:#0000FF">
-			    <p>{{registerForm.last_name.label}}</p>
-				{{ registerForm.last_name }}
+			    <p>{{form.last_name.label}}</p>
+				{{ form.last_name }}
 			</div>
 			<br>
 			<div style="color:#0000FF">
-			    <p>{{registerForm.pseudonym.label}}</p>
-				{{ registerForm.pseudonym }}
+			    <p>{{form.pseudonym.label}}</p>
+				{{ form.pseudonym }}
 			</div>
 			<br>
 			<div style="color:#0000FF">
