@@ -28,7 +28,7 @@ def registerWriterView(request):
                 return render(
                     request,
                     'RegisterWriter.html',
-                    { "newUser"      : newWriter.user
+                    { "newUser"      : newWriter
                     , "registerForm"    : registerForm
                     , "newWriter" : newWriter
                     , "color"   : "green"

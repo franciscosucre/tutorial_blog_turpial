@@ -18,29 +18,6 @@ class WriterRegister(UserCreationForm):
     last_name = forms.CharField(required=True)
     email = forms.EmailField(required=True)
     
-    pseudonym = forms.CharField(
-        required   = True,
-        label      = _('pseudonym'),
-        widget = forms.TextInput(attrs =
-            { 'class'      : 'form-control'
-            , 'placeholder' : _('pseudonym')
-            }
-        )
-    )
-    
     class Meta:
-        model = User
-        fields = ("username", "first_name","last_name","email", "password1", "password2")
-        
-    def save(self, commit=True):
-        with transaction.atomic():
-            user = super(UserCreationForm, self).save(commit=False)
-            user.email = self.cleaned_data["email"]
-            writer = Writer(
-                user = user,
-                pseudonym = self.cleaned_data['pseudonym']
-                )
-            user.save()
-            writer.save()
-            return writer
-    
+        model = Writer
+        fields = ("username", "first_name","last_name","email", "password1", "password2","pseudonym")

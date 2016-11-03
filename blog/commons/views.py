@@ -4,16 +4,10 @@ alguien accede a uno de esos url se busca en estos archivos el view correspondie
 '''
 from django.shortcuts import render
 from commons.exceptions import UnknownError
-from django.contrib.auth.decorators import login_required,permission_required
+from django.contrib.auth.decorators import login_required
 from django.views.decorators.cache import cache_control
 from sys import exc_info
 
-from django.shortcuts import (redirect)
-from django.contrib.auth import authenticate
-from django.contrib.auth import login
-from writer.exceptions import (NotAWriter,CouldNotAuthenticate)
-from writer.models import Writer
-from django.core.urlresolvers import reverse
 from django.contrib.auth import logout
 from django.contrib import messages
 # import the logging library

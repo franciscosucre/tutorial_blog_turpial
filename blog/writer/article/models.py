@@ -10,4 +10,4 @@ class Article(models.Model):
     creationDate    = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
-        return str(self.writer.user)+"-" + str(self.name)+"--" +str(self.content)+" "+str(self.creationDate) 
+        return str(self.writer.username)+"-" + str(self.name)+"--" +str(self.content)+" "+str(self.creationDate) 

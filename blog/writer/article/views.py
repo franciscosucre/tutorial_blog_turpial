@@ -26,7 +26,7 @@ class articleForm(ModelForm):
 # Vista para listar los proyectos
 def article_list(request, template_name='article_list.html'):
     try: 
-        articles = Article.objects.all().filter(writer=request.user.writer)
+        articles = Article.objects.all().filter(writer=request.user)
         data = {}
         data['object_list'] = articles
         return render(request, template_name, data)
@@ -73,7 +73,7 @@ def article_create(request, template_name='article_form.html'):
         # Validamos el formulario
         if form.is_valid():
             # Creamos un nuevo proyecto con lso datos que se nos ieron
-            newarticle = Article(writer=request.user.writer,
+            newarticle = Article(writer=request.user,
                                  name=form.cleaned_data['name'],
                                  content=form.cleaned_data['content']
                                  )
