@@ -4,37 +4,48 @@
 {% endblock %}
 {% block innerContents%}
 	<form method="post">
-		{% if message %}
-			{{ message }}
-			<br>
-			<br>
-		{% endif %}
 		{% csrf_token %}
 		<div style="color:#0000FF">
 			<div style="color:#0000FF">
 				<p>REGISTER_WRITER</p>
+				{% if message %}
+                    <p>{{ message }}</p>
+                {% endif %}
+				{% if registerForm.errors %}
+                    <p style="color='{{ color }}'">{{ registerForm.errors }}</p>
+                {% endif %}
 			</div>
 			<div style="color:#0000FF">
+                <p>{{registerForm.username.label}}</p>
+                {{ registerForm.username }}
+            </div>
+			<div style="color:#0000FF">
+                <p>{{registerForm.email.label}}</p>
 				{{ registerForm.email }}
 			</div>
 			<br>
 			<div style="color:#0000FF">
-				{{ registerForm.password }}
+			    <p>{{registerForm.password1.label}}</p>
+				{{ registerForm.password1 }}
 			</div>
 			<br>
 			<div style="color:#0000FF">
-				{{ registerForm.comfirmPassword }}
+		        <p>{{registerForm.password2.label}}</p>
+				{{ registerForm.password2 }}
 			</div>
 			<br>
 			<div style="color:#0000FF">
-				{{ registerForm.firstName }}
+		        <p>{{registerForm.first_name.label}}</p>
+				{{ registerForm.first_name }}
 			</div>
 			<br>
 			<div style="color:#0000FF">
-				{{ registerForm.lastName }}
+			    <p>{{registerForm.last_name.label}}</p>
+				{{ registerForm.last_name }}
 			</div>
 			<br>
 			<div style="color:#0000FF">
+			    <p>{{registerForm.pseudonym.label}}</p>
 				{{ registerForm.pseudonym }}
 			</div>
 			<br>

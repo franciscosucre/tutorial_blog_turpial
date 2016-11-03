@@ -10,6 +10,7 @@ from writer.article import views
 
 urlpatterns = [
   url(r'^$', views.article_list, name='article_list'),
+  url(r'^detail/(?P<pk>\d+)$', views.article_detail, name='article_detail'),
   url(r'^new$', views.article_create, name='article_new'),
   url(r'^edit/(?P<pk>\d+)$', views.article_update, name='article_edit'),
   url(r'^delete/(?P<pk>\d+)$', views.article_delete, name='article_delete')

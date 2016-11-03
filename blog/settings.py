@@ -152,9 +152,14 @@ LOGGING = {
     },
     'handlers': {
         'file': {
+            'level': 'ERROR',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'blog/BlogApp.log'),
+        },
+        'template_file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': 'BlogApp.log',
+            'filename': os.path.join(BASE_DIR, 'blog/BlogAppTemplates.log'),
         },
         'console': {
             'class': 'logging.StreamHandler',
@@ -162,14 +167,18 @@ LOGGING = {
     },
     'loggers': {
         'django': {
-            'handlers': ['file','console'],
+            'handlers': ['file','template_file','console'],
             'level': 'DEBUG',
             'propagate': True,
         },
+        'django.request': {
+            'handlers': ['file','console'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
     },
 }
-# Direccion a la cual redirigira la pagina cuando haga falta iniciar sesion
-LOGIN_URL='/login'
+LOGIN_URL='/login/'
 # Direccion a la cual redirigira la pagina cuando se inicie sesion
 LOGIN_REDIRECT_URL='/home'
 # Direccion a la cual redirigira la pagina cuando se cierre sesion
