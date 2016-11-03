@@ -43,8 +43,8 @@ def registerWriterView(request):
                     { "newUser"      : None
                     , "registerForm"    : registerForm
                     , "newWriter" : None
-                    , "color"   : None
-                    , 'message' : None
+                    , "color"   : "green"
+                    , 'message' : "Por favor rellene el formulario"
                     }
                 )
         

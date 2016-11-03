@@ -183,3 +183,5 @@ LOGOUT_REDIRECT_URL='/index'
 # en la seccion de la seccion de arguments lo siguiente
 #    loaddata <nombredelarchivo>
 FIXTURE_DIRS=[os.path.join(BASE_DIR, 'commons/')]
+
+AUTH_USER_MODEL = 'writer.Writer'

@@ -141,7 +141,7 @@ def homeView(request):
             , 'first_name' :current_user.first_name
             , 'last_name' :current_user.last_name
             , 'email' :current_user.email
-            , 'pseudonym' :current_user.writer.pseudonym
+            , 'pseudonym' :current_user.pseudonym
             , 'message' :None
             })
     except:
