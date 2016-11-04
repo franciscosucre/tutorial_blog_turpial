@@ -12,11 +12,6 @@
 			<h4 class="modal-title" id="myModalLabel">Article {{ article.id }}</h4>
 		</div>
 		<div class="modal-body">
-			{% if message %} 
-				{{ message }}
-			<br>
-			<br>
-			{% endif %} 
 			{% csrf_token %}
 			<div style="color: #0000FF">
 				<form method="post" action="{% url 'article_delete' object.id %}">

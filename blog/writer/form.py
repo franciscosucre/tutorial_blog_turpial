@@ -18,3 +18,4 @@ class WriterRegister(UserCreationForm):
     class Meta:
         model = Writer
         fields = ("username", "first_name","last_name","email", "password1", "password2","pseudonym")
+

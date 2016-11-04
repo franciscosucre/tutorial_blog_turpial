@@ -56,7 +56,7 @@
 			<div class="col-sm-2">
 				<ul id="sidebar" class="nav nav-stacked affix list-group">
 					{% if request.user.is_authenticated %}
-					<li><a class="list-group-item" href="/writer/article">Dashboard</a></li>
+					<li><a class="list-group-item" href="/writer/article">Article List</a></li>
 					{% block sidebar %} 
                     {% endblock sidebar %}
 					{% else %} 

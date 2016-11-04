@@ -14,8 +14,7 @@
 				}}</h4>
 		</div>
 		<div class="modal-body">
-			{% if message %} {{ message }} <br> <br> {% endif %} {%
-			csrf_token %}
+			{% csrf_token %}
 			<div style="color: #0000FF">
 				{% if article %}
 				<div>

@@ -4,15 +4,9 @@
 <script src="{% static 'js/jquery.form.js'%}"></script>
 {% endblock %} {% block innerContents%}
 <form method="post">
-	<!-- Si la variable message no es nula -->
-	{% if message %} {{ message }} <br> <br> {% endif %} 
-
-	
-
 	<!-- Aun no estoy claro de que hace esto pero lo necesita -->
 	{% csrf_token %}
 	<div style="color: #0000FF">
-		<h1>Articles</h1>
 		<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
 			<div class="modalcontent"></div>
@@ -29,9 +23,6 @@
 			</li> 
 			{% endfor %}
 		</ul>
-		<!-- Nos lleva a crear un proyecto -->
-		<a data-toggle="modal" data-target="#modal"
-				title="edit item" data-tooltip href="#" onclick="modal_link('{% url 'article_new' %}')">New</a>
 	</div>
 </form>
 
