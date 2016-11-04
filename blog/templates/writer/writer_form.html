@@ -1,13 +1,12 @@
 {% extends "base.html" %}
 {% block title %}
-  Writing App
+  Registro De Escritor
 {% endblock %}
 {% block innerContents%}
 	<form method="post">
 		{% csrf_token %}
 		<div style="color:#0000FF">
 			<div style="color:#0000FF">
-				<p>REGISTER_WRITER</p>
 				{% if message %}
                     <p>{{ message }}</p>
                 {% endif %}
