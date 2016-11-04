@@ -1,7 +1,18 @@
+            {% load static %}
+<script src="{% static 'js/jquery-3.1.1.min.js'%}" type="text/javascript"></script>
+            <script src="{% static 'js/bootstrap.min.js'%}" type="text/javascript"></script>
+
 <div class="modal-dialog modal-lg">
 	<div class="modal-content">
+	{{article_id  }}
+	{% if article.id %}
 		<form id="article_update_form" method='post' class="form" role="form"
-			action='{% url 'article_edit' article.id %}'>
+			action="{% url 'article_edit' article.id   %}">
+	{% else %}
+		<form id="article_update_form" method='post' class="form" role="form"
+			action="{% url 'article_new'  %}">
+	{% endif %}
+		
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal"
 					aria-hidden="true">×</button>
@@ -31,21 +42,15 @@
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal"
-						value="annulla" /> <input type="submit" class="btn btn-primary"
-						value="save" style="margin-bottom: 5px;" />
+						value="Cancel" /> <input type="submit" class="btn btn-primary"
+						value="Save" style="margin-bottom: 5px;" />
 				</div>
 		</form>
 		<script>
-			jQuery('.modal-content .calendar').datepicker({
-				dateFormat : "yy-mm-dd"
-			});
-			var form_options = {
-				target : '#modal',
-				success : function() {
-				}
-			}
-			$('#article_update_form').ajaxForm(form_options);
-		</script>
+		
+	    var form_options = { target: '#modal', success: function(response) {} };
+	    $('#news-create').ajaxForm(form_options);
+	</script>
 	</div>
 	<!-- /.modal-content -->
 </div>

@@ -13,5 +13,7 @@ urlpatterns = [
   url(r'^detail/(?P<pk>\d+)$', views.article_detail.as_view(), name='article_detail'),
   url(r'^new$', views.article_create.as_view(), name='article_new'),
   url(r'^edit/(?P<pk>\d+)$', views.article_update.as_view(), name='article_edit'),
-  url(r'^delete/(?P<pk>\d+)$', views.article_delete.as_view(), name='article_delete')
+  url(r'^delete/(?P<pk>\d+)$', views.article_delete.as_view(), name='article_delete'),
+  url(r'^success/$', views.Success.as_view(), name='success')
 ]
+

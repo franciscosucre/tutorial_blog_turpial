@@ -4,7 +4,7 @@
 {% endblock %} {% block innerContents%}
 <form method="post">
 	<!-- Si la variable message no es nula -->
-	{% if message %} {{ message }} <br> <br> {% endif %}
+	{% if message %} {{ message }} <br> <br> {% endif %} 
 
 	
 
@@ -12,21 +12,46 @@
 	{% csrf_token %}
 	<div style="color: #0000FF">
 		<h1>Articles</h1>
-		<div class="modal fade" id="modal" tabindex="-1" role="dialog"
-        aria-labelledby="myModalLabel" aria-hidden="true"></div>
+		<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+			<div class="modalcontent"></div>
+		</div>
 		<ul>
 			<!-- Iteramos sobre la lista de objetos recibidas del view -->
 			{% for article in object_list %}
-			<li><a href="{% url "article_detail" article.id %}">{{article.name }}</a> : {{ article.type }} <!-- Estos links nos llevan al url project_edit con article.id como argumento -->
-				<a data-toggle="modal"
-				href="{% url 'article_edit' article.id %}" data-target="#modal"
-				title="edit item" data-tooltip>Editar</a> 
-				<a href="{% url "article_delete" article.id %}">Eliminar</a>
+			<li><a data-toggle="modal" data-target="#modal" title="detail item" data-tooltip href="#" 
+				onclick="modal_link('{% url 'article_detail' article.id %}')">{{article.name }}</a> <!-- Estos links nos llevan al url project_edit con article.id como argumento -->
+				<a data-toggle="modal" data-target="#modal" title="edit item" data-tooltip href="#" 
+				onclick="modal_link('{% url 'article_edit' article.id %}')" data-tooltip>Editar</a> 
+				<a data-toggle="modal" data-target="#modal" title="delete item" data-tooltip href="#"  
+				onclick="modal_link('{% url 'article_delete' article.id %}')">Eliminar</a>
 			</li> 
 			{% endfor %}
 		</ul>
 		<!-- Nos lleva a crear un proyecto -->
-		<a href="{% url "article_new" %}">New</a>
+		<a data-toggle="modal" data-target="#modal"
+				title="edit item" data-tooltip href="#" onclick="modal_link('{% url 'article_new' %}')">New</a>
 	</div>
 </form>
+
+<script>
+
+function modal_link(url_data){
+	$('#modal').on('show.bs.modal', function (event) {
+	
+		var modal = $(this);
+
+		$.ajax({
+			url: url_data,
+			context: document.body
+			}).done(function(response) {
+				modal.find('.modalcontent').html(response);	
+// 			modal.html(response);
+			});
+	})
+}
+
+
+	
+</script>
 {% endblock %}

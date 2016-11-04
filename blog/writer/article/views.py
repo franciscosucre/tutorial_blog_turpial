@@ -11,6 +11,7 @@ import logging
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http.response import HttpResponse
 from django.template.loader import render_to_string
+from django.views.generic.base import TemplateView
 # Get an instance of a logger
 logger = logging.getLogger()
 
@@ -33,6 +34,9 @@ class article_create(LoginRequiredMixin,CreateView):
     
 class article_detail(LoginRequiredMixin,DetailView):
     model = Article
+    def dispatch(self, *args, **kwargs): 
+        self.article_id = kwargs['pk'] 
+        return super(LoginRequiredMixin, self).dispatch(*args, **kwargs) 
 
 class article_update(LoginRequiredMixin,UpdateView):
     model = Article
@@ -45,9 +49,12 @@ class article_update(LoginRequiredMixin,UpdateView):
     
     def form_valid(self, form): 
         form.save() 
-        article = Article.objects.get(id=self.article_id) 
-        return HttpResponse(render_to_string('myapp/item_edit_form_success.html', {'article': article}))
+        return super(article_update, self).form_valid(form)
+        #return HttpResponse(render_to_string('article/success.html', {'article': article}))
 
 class article_delete(LoginRequiredMixin,DeleteView):
     model = Article
     success_url = '/writer/article'
+    
+class Success(TemplateView):
+    template_name = "success.html"
