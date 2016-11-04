@@ -9,6 +9,8 @@ from django.views.generic import ListView,CreateView,DetailView,DeleteView,Updat
 # import the logging library
 import logging
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http.response import HttpResponse
+from django.template.loader import render_to_string
 # Get an instance of a logger
 logger = logging.getLogger()
 
@@ -36,6 +38,15 @@ class article_update(LoginRequiredMixin,UpdateView):
     model = Article
     fields=['name','content']
     success_url = '/writer/article'
+    
+    def dispatch(self, *args, **kwargs): 
+        self.article_id = kwargs['pk'] 
+        return super(LoginRequiredMixin, self).dispatch(*args, **kwargs) 
+    
+    def form_valid(self, form): 
+        form.save() 
+        article = Article.objects.get(id=self.article_id) 
+        return HttpResponse(render_to_string('myapp/item_edit_form_success.html', {'article': article}))
 
 class article_delete(LoginRequiredMixin,DeleteView):
     model = Article

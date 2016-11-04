@@ -1,31 +1,32 @@
-{% extends "base.html" %}
-{% block title %}
-  Writing App
-{% endblock %}
-{% block innerContents%}
-	<form method="post">
+{% extends "base.html" %} {% block title %} Writing App {% endblock %}
+{% block extra_js%} {% load static %}
+<script src="{% static 'js/jquery.form.js'%}"></script>
+{% endblock %} {% block innerContents%}
+<form method="post">
 	<!-- Si la variable message no es nula -->
-		{% if message %}
-			{{ message }}
-			<br>
-			<br>
-		{% endif %}
-		<!-- Aun no estoy claro de que hace esto pero lo necesita -->
-		{% csrf_token %}
-		<div style="color:#0000FF">
-			<h1>Articles</h1>
-			<ul>
-				<!-- Iteramos sobre la lista de objetos recibidas del view -->
-			    {% for article in object_list %}
-				    <li><a href="{% url "article_detail" article.id %}">{{ article.name }}</a>  : {{ article.type }} 
-				    <!-- Estos links nos llevan al url project_edit con article.id como argumento -->
-				    <a href="{% url "article_edit" article.id %}">Editar</a>
-				    <a href="{% url "article_delete" article.id %}">Eliminar</a>
-				    </li>
-			    {% endfor %}
-			</ul>
-			<!-- Nos lleva a crear un proyecto -->
-			<a href="{% url "article_new" %}">New</a>
-		</div>
-	</form>
+	{% if message %} {{ message }} <br> <br> {% endif %}
+
+	
+
+	<!-- Aun no estoy claro de que hace esto pero lo necesita -->
+	{% csrf_token %}
+	<div style="color: #0000FF">
+		<h1>Articles</h1>
+		<div class="modal fade" id="modal" tabindex="-1" role="dialog"
+        aria-labelledby="myModalLabel" aria-hidden="true"></div>
+		<ul>
+			<!-- Iteramos sobre la lista de objetos recibidas del view -->
+			{% for article in object_list %}
+			<li><a href="{% url "article_detail" article.id %}">{{article.name }}</a> : {{ article.type }} <!-- Estos links nos llevan al url project_edit con article.id como argumento -->
+				<a data-toggle="modal"
+				href="{% url 'article_edit' article.id %}" data-target="#modal"
+				title="edit item" data-tooltip>Editar</a> 
+				<a href="{% url "article_delete" article.id %}">Eliminar</a>
+			</li> 
+			{% endfor %}
+		</ul>
+		<!-- Nos lleva a crear un proyecto -->
+		<a href="{% url "article_new" %}">New</a>
+	</div>
+</form>
 {% endblock %}
