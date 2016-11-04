@@ -3,14 +3,11 @@
 views.py: equivalentes a los actions de struts, estan vinculados a las url de urls.py, cuando
 alguien accede a uno de esos url se busca en estos archivos el view correspondiente y se ejecuta
 '''
-from django.forms import ModelForm
 from writer.article.models import Article
 from django.views.generic import ListView,CreateView,DetailView,DeleteView,UpdateView
 # import the logging library
 import logging
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http.response import HttpResponse
-from django.template.loader import render_to_string
 from django.views.generic.base import TemplateView
 # Get an instance of a logger
 logger = logging.getLogger()

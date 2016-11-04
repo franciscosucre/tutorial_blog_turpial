@@ -11,18 +11,28 @@
 
 			<div class="modalcontent"></div>
 		</div>
-		<ul>
 			<!-- Iteramos sobre la lista de objetos recibidas del view -->
 			{% for article in object_list %}
-			<li><a data-toggle="modal" data-target="#modal" title="detail item" data-tooltip href="#" 
-				onclick="modal_link('{% url 'article_detail' article.id %}')">{{article.name }}</a> <!-- Estos links nos llevan al url project_edit con article.id como argumento -->
-				<a data-toggle="modal" data-target="#modal" title="edit item" data-tooltip href="#" 
-				onclick="modal_link('{% url 'article_edit' article.id %}')" data-tooltip>Editar</a> 
-				<a data-toggle="modal" data-target="#modal" title="delete item" data-tooltip href="#"  
-				onclick="modal_link('{% url 'article_delete' article.id %}')">Eliminar</a>
-			</li> 
+			<div class="list-group">
+				<div class="list-group-item">
+					<a data-toggle="modal" data-target="#modal" title="detail item" data-tooltip href="#" 
+						onclick="modal_link('{% url 'article_detail' article.id %}')">{{article.name }}</a>
+				</div>
+				<div class="list-group-item">
+				    {{article.content }}
+				</div>
+				<div class="list-group-item">
+	                <a data-toggle="modal" data-target="#modal" title="edit item" data-tooltip href="#" 
+                        onclick="modal_link('{% url 'article_edit' article.id %}')" data-tooltip>
+                        <button type="button" class="btn btn-default">Editar</button>
+                    </a> 
+                        <a data-toggle="modal" data-target="#modal" title="delete item" data-tooltip href="#"  
+                        onclick="modal_link('{% url 'article_delete' article.id %}')">
+                        <button type="button" class="btn btn-default">Eliminar</button>
+                        </a>
+	            </div>
+			</div>
 			{% endfor %}
-		</ul>
 	</div>
 </form>
 
