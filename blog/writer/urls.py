@@ -13,5 +13,7 @@ from writer import views
 urlpatterns = [
     url(r'^RegisterWriter$', views.RegisterWriter.as_view(),name = 'RegisterWriter'),
     url(r'^register_done', views.RegisterWriterDone.as_view(),name = 'RegisterWriterDone'),
+    url(r'^Profile/(?P<pk>\d+)$', views.Profile.as_view(),name = 'WriterProfile'),
+    url(r'^EditProfile/(?P<pk>\d+)$', views.EditProfile.as_view(),name = 'EditWriterProfile'),
     url(r'^article/', include('writer.article.urls')),
 ]

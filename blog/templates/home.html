@@ -6,13 +6,6 @@
 
 	{% csrf_token %}
 	<div style="color:#0000FF">
-		<ul>
-			<li>id : {{ request.user.id }}</li>
-			<li>Username : {{ request.user.username }}</li>
-			<li>First Name : {{ request.user.first_name }}</li>
-			<li>Last Name : {{ request.user.last_name }}</li>
-			<li>Email : {{ request.user.email }}</li>
-			<li>Pseudonym : {{ request.user.pseudonym }}</li>
-		</ul>
+		<p>Bienvenido {{request.user.first_name}} {{request.user.last_name}}</p>
 	</div>	
 {% endblock %}

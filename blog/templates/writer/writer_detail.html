@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}
+  Perfil De {{ object.first_name }} {{ object.last_name }}
+{% endblock %}
+{% block innerContents%}
+
+    {% csrf_token %}
+    <div style="color:#0000FF">
+        <ul>
+            <li>id : {{ object.id }}</li>
+            <li>Username : {{ object.username }}</li>
+            <li>First Name : {{ object.first_name }}</li>
+            <li>Last Name : {{ object.last_name }}</li>
+            <li>Email : {{ object.email }}</li>
+            <li>Pseudonym : {{ object.pseudonym }}</li>
+        </ul>
+    </div>  
+{% endblock %}
+
+{% block sidebar%}
+    <li>
+        {% if object.id == request.user.id %}
+        <a 
+        title="edit item" data-tooltip href="{% url 'EditWriterProfile' object.id %}">
+            Edit Profile
+        </a>
+        {% endif %}
+    </li>
+{% endblock %}
