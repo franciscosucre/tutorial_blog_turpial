@@ -5,3 +5,5 @@ db.sqlite3
 /blog/writer/article/migrations/__init__.py
 /blog/writer/migrations/0001_initial.py
 /blog/writer/migrations/__init__.py
+/blog/BlogApp.log
+/blog/BlogAppTemplates.log

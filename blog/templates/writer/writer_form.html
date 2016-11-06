@@ -3,51 +3,72 @@
   Registro De Escritor
 {% endblock %}
 {% block innerContents%}
-	<form method="post">
+	<form method="post"> 
 		{% csrf_token %}
-		<div style="color:#0000FF">
-			<div style="color:#0000FF">
-				{% if message %}
-                    <p>{{ message }}</p>
-                {% endif %}
+		<div>
+			<div class="form-group">
 				{% if form.errors %}
                     <p style="color='{{ color }}'">{{ form.errors }}</p>
                 {% endif %}
 			</div>
-			<div style="color:#0000FF">
-                <p>{{form.username.label}}</p>
-                {{ form.username }}
+			<div class="form-group">
+			    <div>
+                    <p>{{form.username.label}}</p>
+                </div>
+                <div>
+                    {{ form.username }}
+                </div>
             </div>
-			<div style="color:#0000FF">
-                <p>{{form.email.label}}</p>
-				{{ form.email }}
+			<div class="form-group">
+			    <div>
+                    <p>{{form.email.label}}</p>
+                </div>
+                <div>
+				    {{ form.email }}
+				</div>
 			</div>
-			<br>
-			<div style="color:#0000FF">
-			    <p>{{form.password1.label}}</p>
-				{{ form.password1 }}
+			{% if not request.user.is_authenticated %}
+			<div class="form-group">
+			    <div>
+			        <p>{{form.password1.label}}</p>
+		        </div>
+		        <div> 
+				    {{ form.password1 }}
+				</div>
 			</div>
-			<br>
-			<div style="color:#0000FF">
-		        <p>{{form.password2.label}}</p>
-				{{ form.password2 }}
+			<div class="form-group">
+			    <div>
+		            <p>{{form.password2.label}}</p>
+		        </div>
+		        <div>
+				    {{ form.password2 }}
+				</div>
 			</div>
-			<br>
-			<div style="color:#0000FF">
-		        <p>{{form.first_name.label}}</p>
-				{{ form.first_name }}
+			{% endif %}
+			<div class="form-group">
+			    <div>
+	                <p>{{form.first_name.label}}</p>
+	            </div>
+	            <div>
+				    {{ form.first_name }}
+				</div>
 			</div>
-			<br>
-			<div style="color:#0000FF">
-			    <p>{{form.last_name.label}}</p>
-				{{ form.last_name }}
+			<div class="form-group">
+			    <div>
+			        <p>{{form.last_name.label}}</p>
+			    </div>
+			    <div>
+				    {{ form.last_name }}
+				</div>
 			</div>
-			<br>
-			<div style="color:#0000FF">
-			    <p>{{form.pseudonym.label}}</p>
-				{{ form.pseudonym }}
+			<div class="form-group">
+			    <div>
+			        <p>{{form.pseudonym.label}}</p>
+			    </div>
+			    <div>
+				    {{ form.pseudonym }}
+				</div>
 			</div>
-			<br>
 			<div style="color:#0000FF">
 				<input type="submit" value="Registrar" value="Registrar" class="btn btn-primary"/>
 			</div>

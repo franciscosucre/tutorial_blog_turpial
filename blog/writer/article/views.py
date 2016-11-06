@@ -22,7 +22,7 @@ class article_list(LoginRequiredMixin,ListView):
     
 class article_create(LoginRequiredMixin,CreateView):
     model = Article
-    fields=['name','content','image']
+    fields=['name','content']
     success_url = '/writer/article'
     
     def form_valid(self, form):
@@ -35,7 +35,7 @@ class article_detail(LoginRequiredMixin,DetailView):
 
 class article_update(LoginRequiredMixin,UpdateView):
     model = Article
-    fields=['name','content','image']
+    fields=['name','content']
     success_url = '/writer/article'
 
 class article_delete(LoginRequiredMixin,DeleteView):
