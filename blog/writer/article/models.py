@@ -7,6 +7,7 @@ class Article(models.Model):
     writer          = models.ForeignKey(Writer, on_delete=models.CASCADE)
     name            = models.CharField(max_length = 50)
     content        = models.TextField(max_length = 400)
+    image        = models.ImageField()
     creationDate    = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):

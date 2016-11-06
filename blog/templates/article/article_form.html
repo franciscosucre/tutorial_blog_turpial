@@ -5,44 +5,51 @@
 
 <div class="modal-dialog modal-lg">
 	<div class="modal-content">
-		{{article_id }} {% if article.id %}
+		{{article_id }} 
+		{% if article.id %}
 		<form id="article_update_form" method='post' class="form" role="form"
 			action="{% url 'article_edit' article.id   %}">
-			{% else %}
-			<form id="article_update_form" method='post' class="form" role="form"
-				action="{% url 'article_new'  %}">
-				{% endif %}
+		{% else %}
+		<form id="article_update_form" method='post' class="form" role="form"
+			action="{% url 'article_new'  %}">
+		{% endif %}
 
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-hidden="true">×</button>
-					<h4 class="modal-title" id="myModalLabel">Article {{ article.id }}</h4>
-				</div>
-				<div class="modal-body">
-					{% csrf_token %} 
-					{{ form.non_field_errors }}
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true">×</button>
+				<h4 class="modal-title" id="myModalLabel">Article {{ article.id }}</h4>
+			</div>
+			<div class="modal-body">
+				{% csrf_token %} 
+				{{ form.non_field_errors }}
+				<div class="form-group">
+					{% for field in form %}
 					<div class="form-group">
-						{% for field in form %}
-						<div class="form-group">
-							{% if field.errors %}
-							<ul class="form-errors">
-								{% for error in field.errors %}
-								<li><span class="fa fa-exclamation-triangle"></span> <strong>
-										{{error|escape }}</strong></li> {% endfor %}
-							</ul>
-							{% endif %} {{ field.label_tag }} {{ field }} 
-							{% if field.help_text %}
-							<div class="form-helptext">{{ field.help_text }}</div>
-							{% endif %}
-						</div>
-						{% endfor %}
+						{% if field.errors %}
+						<ul class="form-errors">
+							{% for error in field.errors %}
+							<li>
+							    <span class="fa fa-exclamation-triangle"></span> 
+							    <strong> {{error|escape }}</strong>
+						    </li> 
+				            {% endfor %}
+						</ul>
+						{% endif %}
+						<div >{{ field.label_tag }}</div>
+						<div >{{ field }} </div>
+						 
+						{% if field.help_text %}
+                            <div class="form-helptext">{{ field.help_text }}</div>
+						{% endif %}
 					</div>
-					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal"
-							value="Cancel" /> <input type="submit" class="btn btn-primary"
-							value="Save" style="margin-bottom: 5px;" />
-					</div>
-			</form>
+					{% endfor %}
+				</div>
+				<div class="modal-footer">
+					<input type="button" class="btn btn-default" data-dismiss="modal"
+						value="Cancel" /> <input type="submit" class="btn btn-primary"
+						value="Save" style="margin-bottom: 5px;" />
+				</div>
+		</form>
 			<script>
 		
 	    var form_options = { target: '#modal', success: function(response) {} };
