@@ -2,6 +2,11 @@ body {
     padding-top:65px;
 }
 
+#id_content {
+    width: 300px;
+    height: 200px;
+}
+
 @media (min-width: 979px) {
 
   #midCol.affix-top {

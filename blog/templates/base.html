@@ -21,22 +21,22 @@
 			{% if request.user.is_authenticated %}
 			<li class="nav-item">
 			    <a class="nav-link" href="/home">
-			        Home
+			        Inicio
 					<span class="sr-only">(current)</span>
 			    </a>
 			</li>
 			<li class="nav-item">
 			    <a class="nav-link" href="{% url 'article_list' %}?page={{ page_obj.first }}">
-			        Article List
+			        Lista De Articulos
 			        <span class="sr-only">(current)</span>
 		        </a>
 	        </li>
 			{% else %}
-			<li class="nav-item"><a class="nav-link" href="/login">Login
+			<li class="nav-item"><a class="nav-link" href="/login">Inicio De Sesion
 					<span class="sr-only">(current)</span>
 			</a></li> 
 			{% endif %}
-			<li class="nav-item"><a class="nav-link" href="/about">About
+			<li class="nav-item"><a class="nav-link" href="/about">Sobre Nosotros
 					<span class="sr-only">(current)</span>
 			</a></li>
 		</ul>
@@ -47,7 +47,7 @@
                     {{ request.user.first_name }} {{ request.user.last_name }}</a>
                 <ul class="dropdown-menu">
 				<li><a href="{% url 'WriterProfile' request.user.id %}">Mi Perfil</a></li>
-				<li><a href="/logout/">Logout</a></li> 
+				<li><a href="/logout/">Cerrar Sesion</a></li> 
         </ul>
             </li> 
 			{% else %}

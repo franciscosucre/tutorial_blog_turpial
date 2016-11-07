@@ -3,7 +3,7 @@
 	type="text/javascript"></script>
 <script src="{% static 'js/bootstrap.min.js'%}" type="text/javascript"></script>
 
-<div class="modal-dialog modal-lg">
+<div style="color:black" class="modal-dialog modal-lg">
 	<div class="modal-content">
 		{{article_id }} 
 		{% if article.id %}
@@ -36,7 +36,7 @@
 						</ul>
 						{% endif %}
 						<div >{{ field.label_tag }}</div>
-						<div >{{ field }} </div>
+						<div>{{ field }} </div>
 						 
 						{% if field.help_text %}
                             <div class="form-helptext">{{ field.help_text }}</div>
@@ -46,8 +46,8 @@
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal"
-						value="Cancel" /> <input type="submit" class="btn btn-primary"
-						value="Save" style="margin-bottom: 5px;" />
+						value="Cancelar" /> <input type="submit" class="btn btn-primary"
+						value="Guardar" style="margin-bottom: 5px;" />
 				</div>
 		</form>
 			<script>
