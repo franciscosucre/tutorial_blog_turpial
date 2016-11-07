@@ -17,35 +17,42 @@
 	{% endif %}
 	
 	
-	<table>
-	   <form method="post" action="{% url 'login' %}">
+   <form method="post" action="{% url 'login' %}">
 	   {% csrf_token %}
-	   <br>
-		<tr>
-		    <td>{{ form.username.label_tag }}</td>
-		</tr>
-		<tr>
-		    <td>{{ form.username }}</td>
-		</tr>
-		<tr>
-		    <td>{{ form.password.label_tag }}</td>
-		</tr>
-		<tr>
-		    <td>{{ form.password }}</td>
-		</tr>
-		<tr>
-            <td><input type="submit" value="login" /></td>
-        </tr>
-        <tr>
-            <td><input type="hidden" name="next" value="{{ next }}" /></td>
-        </tr>
-        </form>
-        <tr>
-		{# Assumes you setup the password_reset view in your URLconf #}
-	       <td><p><a href="{% url 'password_reset' %}">Lost password?</a></p></td>
-	    </tr>
-	</table>
-	
+	   <div>
+            <div class="form-group">
+                {% if form.errors %}
+                    <p style="color='{{ color }}'">{{ form.errors }}</p>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <div>
+                    <p>{{ form.username.label_tag }}</p>
+                </div>
+                <div>
+                    {{ form.username }}
+                </div>
+            </div>
+            <div class="form-group">
+                <div>
+                    <p>{{ form.password.label_tag }}</p>
+                </div>
+                <div>
+                    {{ form.password }}
+                </div>
+            </div>
+            <div class="form-group">
+                <div>
+                    <input class="btn btn-primary" type="submit" value="Iniciar Sesion" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div>
+                    <p><a href="{% url 'password_reset' %}">¿Perdio Su Contraseña?</a></p>
+                </div>
+            </div>
+        </div>
+	</form>
 	
 	
 	

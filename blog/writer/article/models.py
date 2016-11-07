@@ -6,7 +6,7 @@ class Article(models.Model):
     # Se escoge foreign key porque 1 proyecto es de un usuario pero un usuario puede tener muchos proyecots
     writer          = models.ForeignKey(Writer, on_delete=models.CASCADE)
     name            = models.CharField(max_length = 50)
-    content        = models.TextField(max_length = 400)
+    content        = models.TextField(max_length = 3000)
     creationDate    = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):

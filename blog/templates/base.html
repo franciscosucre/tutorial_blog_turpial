@@ -32,9 +32,6 @@
 		        </a>
 	        </li>
 			{% else %}
-			<li class="nav-item"><a class="nav-link" href="/login">Inicio De Sesion
-					<span class="sr-only">(current)</span>
-			</a></li> 
 			{% endif %}
 			<li class="nav-item"><a class="nav-link" href="/about">Sobre Nosotros
 					<span class="sr-only">(current)</span>
@@ -47,9 +44,10 @@
                     {{ request.user.first_name }} {{ request.user.last_name }}</a>
                 <ul class="dropdown-menu">
 				<li><a href="{% url 'WriterProfile' request.user.id %}">Mi Perfil</a></li>
-				<li><a href="/logout/">Cerrar Sesion</a></li> 
+				<li><a href="/logout/">Cerrar Sesion</a></li>
+			</li> 
         </ul>
-            </li> 
+            
 			{% else %}
 			<li><a href="/writer/RegisterWriter"><span class="glyphicon glyphicon-user"></span>
 					Registrarse</a></li>
@@ -79,5 +77,24 @@
 			{% endblock innerContents %}
 			</div>
 		</div>
+	</div>
+	
+	<footer class="navbar navbar-inverse navbar-fixed-bottom">
+	    <ul class="nav navbar-nav ">
+            <li style="color:white">
+			        <a>
+				        Support: 
+				        <i class="fa fa-envelope-o" aria-hidden="true"></i> 
+				        BlogTurpial@turpialdev.com
+			        </a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right" style="color:white">
+			<li>
+			    <i class="fa fa-copyright" aria-hidden="true"></i>
+			    <a href="#">Copyright 2016</a>
+			</li>
+        </ul>
+    </footer>
 </body>
 </html>

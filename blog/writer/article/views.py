@@ -23,7 +23,8 @@ class article_list(LoginRequiredMixin,ListView):
 class article_create(LoginRequiredMixin,CreateView):
     model = Article
     fields=['name','content']
-    success_url = '/writer/article'
+    def get_success_url(self):
+        return '/writer/article?page=1'
     
     def form_valid(self, form):
         writer = self.request.user
@@ -36,11 +37,14 @@ class article_detail(LoginRequiredMixin,DetailView):
 class article_update(LoginRequiredMixin,UpdateView):
     model = Article
     fields=['name','content']
-    success_url = '/writer/article'
+    
+    def get_success_url(self):
+        return '/writer/article?page=1'
 
 class article_delete(LoginRequiredMixin,DeleteView):
     model = Article
-    success_url = '/writer/article'
+    def get_success_url(self):
+        return '/writer/article?page=1'
     
 class Success(TemplateView):
     template_name = "success.html"
