@@ -1,0 +1,9 @@
+<span class="col-xs-12 errorMessage">
+        {% for field, errors in form.errors.items %}
+            <span class="messages">
+                 {% for error in errors %}
+                    <span style="color:#a94442" class="errorMessage">{{error}}</span>
+                 {% endfor %}
+             </span>
+        {% endfor %}
+</span> 

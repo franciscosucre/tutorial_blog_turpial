@@ -9,7 +9,7 @@ from django.conf.urls import url
 from writer.article import views
 
 urlpatterns = [
-  url(r'^$', views.article_list.as_view(), name='article_list'),
+  url(r'^(?P<page>\d*)?$', views.article_list.as_view(), name='article_list'),
   url(r'^detail/(?P<pk>\d+)$', views.article_detail.as_view(), name='article_detail'),
   url(r'^new$', views.article_create.as_view(), name='article_new'),
   url(r'^edit/(?P<pk>\d+)$', views.article_update.as_view(), name='article_edit'),

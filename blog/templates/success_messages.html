@@ -1,0 +1,9 @@
+<span class="col-xs-12 successMessage">
+        {% if messages %}
+                {% for message in messages %}
+                    <span>
+                        <span style="color:green" class="successMessage">{{ message }}</span>
+                    </span>
+                {% endfor %}
+        {% endif %}
+</span>

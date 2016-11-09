@@ -3,9 +3,11 @@
   Registro De Escritor
 {% endblock %}
 {% block innerContents%}
+    {% include "success_messages.html" %}
+    {% include "error_messages.html" %}
 	<form method="post"> 
 		{% csrf_token %}
-		<div>
+		<div class="col-xs-4">
 			<div class="form-group">
 				{% if form.errors %}
                     <p style="color='{{ color }}'">{{ form.errors }}</p>
@@ -45,6 +47,8 @@
 				</div>
 			</div>
 			{% endif %}
+		</div>
+		<div class="col-xs-4 ">
 			<div class="form-group">
 			    <div>
 	                <p>{{form.first_name.label}}</p>
@@ -69,9 +73,15 @@
 				    {{ form.pseudonym }}
 				</div>
 			</div>
+			{% if not request.user.is_authenticated %}
 			<div style="color:#0000FF">
-				<input type="submit" value="Registrar" value="Registrar" class="btn btn-primary"/>
+				<input type="submit" value="Registrar" class="btn btn-primary"/>
 			</div>
+			{% else %}
+			<div style="color:#0000FF">
+                <input type="submit" value="Guardar Cambios" class="btn btn-primary"/>
+            </div>
+			{% endif %}
 		</div>
 	</form>
 {% endblock %}

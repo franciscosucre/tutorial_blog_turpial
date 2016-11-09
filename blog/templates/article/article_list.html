@@ -1,17 +1,40 @@
 {% extends "base.html" %} 
-{% block title %} Articles {% endblock %}
+{% block title %} 
+    Articles
+{% endblock %}
 {% block extra_js%} {% load static %}
 <script src="{% static 'js/jquery.form.js'%}"></script>
-{% endblock %} {% block innerContents%}
+{% endblock %} 
+{% block innerContents%}
+
 	<!-- Aun no estoy claro de que hace esto pero lo necesita -->
-	{% csrf_token %}
 	<div style="color: #0000FF">
 		<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modalcontent"></div>
 		</div>
+        
 		{% if object_list %}
 			<!-- Iteramos sobre la lista de objetos recibidas del view -->
-			{% for article in object_list %}
+			
+			{% for article in object_list[0:1] %}
+			<div class="list-group" style="margin-top:10px">
+                <div class="list-group-item">
+                    <a data-toggle="modal" data-target="#modal" title="detail item" data-tooltip href="#" 
+                        onclick="modal_link('{% url 'article_detail' article.id %}')">{{article.name }}</a>
+                </div>
+                <div class="list-group-item">
+                    <a data-toggle="modal" data-target="#modal" title="edit item" data-tooltip href="#" 
+                        onclick="modal_link('{% url 'article_edit' article.id %}')" data-tooltip>
+                        <button type="button" class="btn btn-default">Editar</button>
+                    </a> 
+                        <a data-toggle="modal" data-target="#modal" title="delete item" data-tooltip href="#"  
+                        onclick="modal_link('{% url 'article_delete' article.id %}')">
+                        <button type="button" class="btn btn-default">Eliminar</button>
+                        </a>
+                </div>
+            </div>
+            {% endfor %}
+			{% for article in object_list[1:] %}
 			<div class="list-group">
 				<div class="list-group-item">
 					<a data-toggle="modal" data-target="#modal" title="detail item" data-tooltip href="#" 
@@ -76,13 +99,17 @@
 			      </ul>
 			    </nav>
 			    <div>
-			        <p>Pagina {{page_obj.number}} de {{page_obj.end_index}}</p>
+			        <p>Pagina {{page_obj.number}} de {{page_obj.paginator.num_pages}}</p>
 			    </div>
 	        {% endif %}
 	    {% else %}
            <p>No Hay Articulos</p>
         {% endif %}
 	</div>
+
+    <div class="list-group">
+        
+    </div>
 
 <script>
 

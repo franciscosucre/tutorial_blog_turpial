@@ -28,3 +28,11 @@ body {
       position:fixed;
   }
 }
+
+.errorMessage{
+    color: #a94442;
+}
+
+.successMessage{
+    color: "green";
+}
